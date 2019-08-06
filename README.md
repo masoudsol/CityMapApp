@@ -1,20 +1,19 @@
-YelpApp
-This App will search restaurnats close to you and provides information, rating and review.
+CityMapApp
+This App will load a json file of cities and their coordinates.
 
 Installation
 Clone the repo and open with Xcode 9+
 
 Features
-- App will start by asking for location permission. Granted, it will pull restaurnats based on your location, otherwise it will default to Toronto 
-- User is able to search for restaurnts around with a keyword using the serach box
+- App will start by loading a list of all cities 
+- User is able to search for cities with a keyword using the serach box
 - Search box appears on the main page under the navigation bar as the user scrolls to the top of the list
-- Sort button on the top right corner will sort the grid in ascending and descending alphabetical order
-- Favourite restaurnts can be spoted throughout the app by a golden star
-- You can mark a restaurant as your favourite by selecting it from the gridview to open detail view and tapping on the star
-- Tapping the favourite button will take you to a list of favourite businuesses 
+- Cities are alphabetically sorted
+- Tapping the city button will take you to a map view of the city
 
-Pods
-PIN image caching library
+Unit Tests
+- Json decoder will test of the json was parsed properly
+- Search filter test will check for different input and output searching on the list of cities
 
 License
 Copyright © 2019 Mas One. All rights reserved.
