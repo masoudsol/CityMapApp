@@ -10,20 +10,17 @@ import Foundation
 
 class APIService {
     
-    typealias WebServiceCompletionBlock = (_ data: Data?,_ error: Error?)->Void
-    typealias ParsedCompletionBlock = (_ data: AnyObject?,_ error: Error?)->Void
+    typealias WebServiceCompletionBlock = (_ data: AnyObject?,_ error: Error?)->Void
     
-    private let cityURL = "https://s3-eu-west-1.amazonaws.com/uploads-eu.hipchat.com/128845/1765144/LqgK6ORrJR4VZ1G/cities.json"
-    
-    func fetchCities(complete: @escaping ParsedCompletionBlock) {
-        requestAPI(url: cityURL){ (data, error) in
-            guard let data = data else{
+    func fetchCities(complete: @escaping WebServiceCompletionBlock) {
+        requestAPI { (data, error) in
+            guard let data = data as? Data else{
                 complete(nil,error)
                 return
             }
             
             do {
-                let parsedJson = try self.parseJson(CityModel.self, from: data)
+                let parsedJson = try self.parseJson([USCity].self, from: data)
                 complete(parsedJson as AnyObject,error)
             } catch let error {
                 print(error.localizedDescription)
@@ -32,30 +29,15 @@ class APIService {
         }
     }
     
-    func requestAPI(url: String, completion: @escaping WebServiceCompletionBlock) {
-        
-        let escapedAddress = url.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-        var request = URLRequest(url: URL(string: escapedAddress)!)
-//        request.addValue(WebServiceConstants.kAPIKEY, forHTTPHeaderField: "Authorization")
-//        request.addValue("application/xml", forHTTPHeaderField: "Content-Type")
-        request.httpMethod = "GET"
-        let task = URLSession.shared.downloadTask(with: request) { data, response, error in
-            
-            guard let data = data, error == nil else {
-                print("Error in fetching response",error ?? "")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
-                print("Error in fetching response")
+    func requestAPI(completion: @escaping WebServiceCompletionBlock) {
+        if let path = Bundle.main.path(forResource: "cities", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                completion(data as AnyObject, nil)
+            } catch let error{
                 completion(nil, error)
             }
-            
-//            completion(data,error)
-            
         }
-        task.resume()
-        
     }
     
     func parseJson<T>(_ type: T.Type, from data: Data)  throws -> T? where T : Decodable {

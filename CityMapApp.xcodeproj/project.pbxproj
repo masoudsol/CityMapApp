@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		45A5B7B022E8EC790015BB62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5B7AF22E8EC790015BB62 /* AppDelegate.swift */; };
-		45A5B7B222E8EC790015BB62 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5B7B122E8EC790015BB62 /* CollectionViewController.swift */; };
 		45A5B7B522E8EC790015BB62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45A5B7B322E8EC790015BB62 /* Main.storyboard */; };
 		45A5B7B722E8EC7A0015BB62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45A5B7B622E8EC7A0015BB62 /* Assets.xcassets */; };
 		45A5B7BA22E8EC7A0015BB62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45A5B7B822E8EC7A0015BB62 /* LaunchScreen.storyboard */; };
@@ -17,12 +16,24 @@
 		45A5B7CB22E90DD50015BB62 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45A5B7CA22E90DD50015BB62 /* ViewModel.swift */; };
 		45C2CE8622EE8C4E0001FA1A /* CitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45C2CE8522EE8C4E0001FA1A /* CitiesTableViewController.swift */; };
 		45E7CD1022F8AF9C00CC2883 /* CityMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7CD0F22F8AF9C00CC2883 /* CityMapViewController.swift */; };
+		45E7CD1522F9E36000CC2883 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 45E7CD1422F9E36000CC2883 /* cities.json */; };
+		45E7CD1722F9F44C00CC2883 /* USCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7CD1622F9F44C00CC2883 /* USCity.swift */; };
+		45E7CD3622FA00B300CC2883 /* CityMapAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E7CD3522FA00B200CC2883 /* CityMapAppTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		45E7CD3022FA008400CC2883 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 45A5B7A422E8EC790015BB62 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45A5B7AB22E8EC790015BB62;
+			remoteInfo = CityMapApp;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		45A5B7AC22E8EC790015BB62 /* CityMapApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CityMapApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A5B7AF22E8EC790015BB62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		45A5B7B122E8EC790015BB62 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		45A5B7B422E8EC790015BB62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		45A5B7B622E8EC7A0015BB62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		45A5B7B922E8EC7A0015BB62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -32,12 +43,22 @@
 		45A5B7CA22E90DD50015BB62 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		45C2CE8522EE8C4E0001FA1A /* CitiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTableViewController.swift; sourceTree = "<group>"; };
 		45E7CD0F22F8AF9C00CC2883 /* CityMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityMapViewController.swift; sourceTree = "<group>"; };
-		45EB766F22EF3CDB002038E6 /* YelpAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpAppTests.swift; sourceTree = "<group>"; };
-		45EB767122EF3CDB002038E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45E7CD1422F9E36000CC2883 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
+		45E7CD1622F9F44C00CC2883 /* USCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USCity.swift; sourceTree = "<group>"; };
+		45E7CD2B22FA008400CC2883 /* CityMapAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CityMapAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		45E7CD2F22FA008400CC2883 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		45E7CD3522FA00B200CC2883 /* CityMapAppTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityMapAppTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		45A5B7A922E8EC790015BB62 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45E7CD2822FA008400CC2883 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -58,7 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				45A5B7AE22E8EC790015BB62 /* CityMapApp */,
-				45EB766E22EF3CDB002038E6 /* CityMapAppTests */,
+				45E7CD2C22FA008400CC2883 /* CityMapAppTests */,
 				45A5B7AD22E8EC790015BB62 /* Products */,
 				34CB3A0482574DA07E047CEF /* Frameworks */,
 			);
@@ -68,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				45A5B7AC22E8EC790015BB62 /* CityMapApp.app */,
+				45E7CD2B22FA008400CC2883 /* CityMapAppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +97,7 @@
 		45A5B7AE22E8EC790015BB62 /* CityMapApp */ = {
 			isa = PBXGroup;
 			children = (
+				45E7CD1122F9E1A000CC2883 /* JsonResource */,
 				45A5B7AF22E8EC790015BB62 /* AppDelegate.swift */,
 				45A5B7C222E8F2670015BB62 /* Service */,
 				45A5B7C122E8F1BB0015BB62 /* Module */,
@@ -108,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				45A5B7C822E90AA30015BB62 /* CityModel.swift */,
+				45E7CD1622F9F44C00CC2883 /* USCity.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -115,7 +139,6 @@
 		45A5B7C422E909AB0015BB62 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				45A5B7B122E8EC790015BB62 /* CollectionViewController.swift */,
 				45C2CE8522EE8C4E0001FA1A /* CitiesTableViewController.swift */,
 				45E7CD0F22F8AF9C00CC2883 /* CityMapViewController.swift */,
 			);
@@ -130,11 +153,19 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		45EB766E22EF3CDB002038E6 /* CityMapAppTests */ = {
+		45E7CD1122F9E1A000CC2883 /* JsonResource */ = {
 			isa = PBXGroup;
 			children = (
-				45EB766F22EF3CDB002038E6 /* YelpAppTests.swift */,
-				45EB767122EF3CDB002038E6 /* Info.plist */,
+				45E7CD1422F9E36000CC2883 /* cities.json */,
+			);
+			path = JsonResource;
+			sourceTree = "<group>";
+		};
+		45E7CD2C22FA008400CC2883 /* CityMapAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				45E7CD3522FA00B200CC2883 /* CityMapAppTests.swift */,
+				45E7CD2F22FA008400CC2883 /* Info.plist */,
 			);
 			path = CityMapAppTests;
 			sourceTree = "<group>";
@@ -159,6 +190,24 @@
 			productReference = 45A5B7AC22E8EC790015BB62 /* CityMapApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		45E7CD2A22FA008400CC2883 /* CityMapAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 45E7CD3222FA008400CC2883 /* Build configuration list for PBXNativeTarget "CityMapAppTests" */;
+			buildPhases = (
+				45E7CD2722FA008400CC2883 /* Sources */,
+				45E7CD2822FA008400CC2883 /* Frameworks */,
+				45E7CD2922FA008400CC2883 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				45E7CD3122FA008400CC2883 /* PBXTargetDependency */,
+			);
+			name = CityMapAppTests;
+			productName = CityMapAppTests;
+			productReference = 45E7CD2B22FA008400CC2883 /* CityMapAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -171,6 +220,11 @@
 				TargetAttributes = {
 					45A5B7AB22E8EC790015BB62 = {
 						CreatedOnToolsVersion = 10.3;
+					};
+					45E7CD2A22FA008400CC2883 = {
+						CreatedOnToolsVersion = 10.3;
+						LastSwiftMigration = 1030;
+						TestTargetID = 45A5B7AB22E8EC790015BB62;
 					};
 				};
 			};
@@ -188,6 +242,7 @@
 			projectRoot = "";
 			targets = (
 				45A5B7AB22E8EC790015BB62 /* CityMapApp */,
+				45E7CD2A22FA008400CC2883 /* CityMapAppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -197,9 +252,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45E7CD1522F9E36000CC2883 /* cities.json in Resources */,
 				45A5B7BA22E8EC7A0015BB62 /* LaunchScreen.storyboard in Resources */,
 				45A5B7B722E8EC7A0015BB62 /* Assets.xcassets in Resources */,
 				45A5B7B522E8EC790015BB62 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45E7CD2922FA008400CC2883 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,16 +274,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				45E7CD1022F8AF9C00CC2883 /* CityMapViewController.swift in Sources */,
+				45E7CD1722F9F44C00CC2883 /* USCity.swift in Sources */,
 				45C2CE8622EE8C4E0001FA1A /* CitiesTableViewController.swift in Sources */,
 				45A5B7CB22E90DD50015BB62 /* ViewModel.swift in Sources */,
-				45A5B7B222E8EC790015BB62 /* CollectionViewController.swift in Sources */,
 				45A5B7C922E90AA30015BB62 /* CityModel.swift in Sources */,
 				45A5B7C722E90A480015BB62 /* APIService.swift in Sources */,
 				45A5B7B022E8EC790015BB62 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		45E7CD2722FA008400CC2883 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45E7CD3622FA00B300CC2883 /* CityMapAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		45E7CD3122FA008400CC2883 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45A5B7AB22E8EC790015BB62 /* CityMapApp */;
+			targetProxy = 45E7CD3022FA008400CC2883 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		45A5B7B322E8EC790015BB62 /* Main.storyboard */ = {
@@ -392,6 +471,47 @@
 			};
 			name = Release;
 		};
+		45E7CD3322FA008400CC2883 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CityMapAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.onemobile.CityMapAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CityMapApp.app/CityMapApp";
+			};
+			name = Debug;
+		};
+		45E7CD3422FA008400CC2883 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CityMapAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.onemobile.CityMapAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CityMapApp.app/CityMapApp";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -409,6 +529,15 @@
 			buildConfigurations = (
 				45A5B7BF22E8EC7A0015BB62 /* Debug */,
 				45A5B7C022E8EC7A0015BB62 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		45E7CD3222FA008400CC2883 /* Build configuration list for PBXNativeTarget "CityMapAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				45E7CD3322FA008400CC2883 /* Debug */,
+				45E7CD3422FA008400CC2883 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

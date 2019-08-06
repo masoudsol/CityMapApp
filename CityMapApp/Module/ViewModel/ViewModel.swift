@@ -8,62 +8,46 @@
 
 import Foundation
 
-
 class ViewModel {
-    typealias CityType = (name: String?, country: String?, lon: Double?, lat: Double?)
+    typealias CityType = (name: String, country: String, lon: Double?, lat: Double?)
     
     static let shared = ViewModel()
     
-    var reloadTable: ()->() = { }
-    var reviewLoaded: ()->() = { }
-    var cities = [City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999)), City(country: "UA", _id: "dsadsa", name: "hello", coort: Coordinates(lat: 34.283333, lon: 44.549999))]
-    var filteredCities = [City]()
+    var selectedCity: Int = 0
+    var cities: [USCity] = []
+    var filteredCities = [USCity]()
     var searchActive : Bool = false
     var cityCount: Int {
-        return searchActive ? filteredCities.count:cities.count
+        return searchActive ? filteredCities.count : cities.count
     }
-    var selectedCity: Int = 0
     
     private var services = APIService()
-    private var ascendingOrder = false
-    private init(){}
     
-    func fetchCities(keyword: String?, lat: String, long: String){
-        services.fetchCities() { (result, error) in
-            if let result = result as? CityModel, let cities = result.cities {
-                self.cities = cities
-                self.reloadTable()
+    private init(){
+        services.fetchCities { (result, error) in
+            guard let result = result as? [USCity], error == nil else {
+                return
             }
+            
+            self.cities = result.sorted(by: {
+                return ($0.city == $1.city ? ($0.state < $1.state) : ($0.city < $1.city))
+            })
         }
     }
     
     func getCity(at index: Int) -> CityType {
         let city = searchActive ? filteredCities[index]:cities[index]
         
-        return (city.name, city.country, city.coort?.lon, city.coort?.lat)
+        return (city.city, city.state, city.longitude, city.latitude)
     }
-    
-    
     
     func filterCity(key: String) {
         filteredCities = cities.filter({ (city) -> Bool in
-            let tmp: NSString = city.name as NSString
-            let range = tmp.range(of: key, options: NSString.CompareOptions.caseInsensitive)
-            return range.location != NSNotFound
-        })
-    }
-    
-    func sort(){
-        ascendingOrder = !ascendingOrder
-        
-        cities = cities.sorted {
-            if ascendingOrder{
-                return $0.name < $1.name
-            } else {
-                return $0.name > $1.name
+            guard let cityName = city.city as NSString? else {
+                return false
             }
-        }
-        
-        reloadTable()
+            let range = cityName.range(of: key, options: NSString.CompareOptions.caseInsensitive)
+            return range.location != NSNotFound && range.location == 0
+        })
     }
 }

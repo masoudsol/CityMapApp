@@ -31,12 +31,10 @@ class CitiesTableViewController: UITableViewController {
 // TableView DataSource and Delegate
 extension CitiesTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let name = viewModel.getCity(at: indexPath.row).name else {
-            return UITableViewCell()
-        }
+        let city = viewModel.getCity(at: indexPath.row)
         
         let cell = UITableViewCell()
-        cell.textLabel?.text =  name + ", " + (viewModel.getCity(at: indexPath.row).country ?? "")
+        cell.textLabel?.text =  city.name + ", " + city.country 
         
         return cell
     }
@@ -71,13 +69,14 @@ extension CitiesTableViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         viewModel.filterCity(key: searchText)
+        
         if(searchText.count==0){
             viewModel.searchActive = false;
         } else {
             viewModel.searchActive = true;
         }
+        
         self.tableView.reloadData()
     }
 }
